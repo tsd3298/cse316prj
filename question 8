@@ -13,6 +13,36 @@ int n, fc=0, sc=0, mc=0;
 int qty;
 
 
+void round_robin()
+{
+	int time= m[0].at, temp=0, a=0, i, b;
+		while(time!=120 && a!=mc)
+		{
+		for(i=0; i<=temp; i++)
+		{
+			if(m[i].rbt > qty)
+			{
+				time += qty;
+				m[i].rbt -= qty;
+			}
+			else if(m[i].rbt <=qty && m[i].rbt !=0)
+			{
+				time += m[i].rbt;
+				m[i].rbt =0;
+				m[i].cmpt = time;
+				a++;
+			}
+			else;
+		}
+	int start = temp+1;
+		for(b= start; b<mc; b++)
+		{
+			if(m[b].at <= time){
+				temp++;
+			}
+		}
+		}	
+}
 
 void merger(){
 	int isc=0, ifc= 0, min, flag;
@@ -88,6 +118,63 @@ void merger(){
 	}
 }
 
+void input()
+{
+	int tempo,  i, t;
+	printf("Enter total no of queries: "); 
+	scanf("%d", &n);
+	if(n==0) { printf("\n No queries\n"); }
+	else
+	{
+		printf("\nEnter qty for each Process: "); 
+		scanf("%d", &qty);
+		printf("\nEnter 1 for faculty and 2 for student\n");
+		for(i=0; i<n; i++)
+		{
+			printf("\nJob Type (1/2): ");
+			scanf("%d", &tempo);
+			if(tempo==1)
+			{
+				printf("Query Id: "); 
+				scanf("%d", &f[fc].pid);
+				printf("Arrival Time: "); 
+				scanf("%d", &t);
+				if(t<1000 || t>1200)
+				{
+					printf("\nPlease Enter The Correct time");
+					input();
+				}
+				else
+				{
+				f[fc].at= t-1000;
+				}
+				printf("Resolving Time: ");
+				scanf("%d", &f[fc].bt);
+				f[fc].rbt= f[fc].bt; 
+				fc++;
+			} 
+			else
+			{
+				printf("Query Id: "); 
+				scanf("%d", &s[sc].pid);
+				printf("Arrival Time: "); 
+				scanf("%d", &t); 
+				if(t<1000 || t>1200)
+				{
+					printf("\nPlease Enter The Correct time\n");
+					input();
+				}
+				else 
+				{s[sc].at= t-1000; }
+				printf("Resolving Time: "); 
+				scanf("%d", &s[sc].bt);	 
+				s[sc].rbt= s[sc].bt;
+				sc++;
+			}
+		}
+	}
+}
+
 void output()
 {
 	int i=0, total=0, sum=0; 
@@ -105,6 +192,8 @@ void output()
 	printf("\nAverage query time: %lf", avg);
 	printf("\nProcess Execution Completed");
 }
+
+
 
 int main()
 {
