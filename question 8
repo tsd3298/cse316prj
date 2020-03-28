@@ -7,11 +7,9 @@ struct online_sys
 	int cmpt;
 	int rbt;
 }
-
 f[100], s[100], m[100];
 int n, fc=0, sc=0, mc=0;
-int qty;
-
+int quanta;
 
 void round_robin()
 {
@@ -20,12 +18,12 @@ void round_robin()
 		{
 		for(i=0; i<=temp; i++)
 		{
-			if(m[i].rbt > qty)
+			if(m[i].rbt > quanta)
 			{
-				time += qty;
-				m[i].rbt -= qty;
+				time += quanta;
+				m[i].rbt -= quanta;
 			}
-			else if(m[i].rbt <=qty && m[i].rbt !=0)
+			else if(m[i].rbt <=quanta && m[i].rbt !=0)
 			{
 				time += m[i].rbt;
 				m[i].rbt =0;
@@ -43,7 +41,6 @@ void round_robin()
 		}
 		}	
 }
-
 void merger(){
 	int isc=0, ifc= 0, min, flag;
 	if( fc!=0  && sc!=0)
@@ -117,7 +114,6 @@ void merger(){
 		printf("\n No valid Jobs available\n");
 	}
 }
-
 void input()
 {
 	int tempo,  i, t;
@@ -126,8 +122,8 @@ void input()
 	if(n==0) { printf("\n No queries\n"); }
 	else
 	{
-		printf("\nEnter qty for each Process: "); 
-		scanf("%d", &qty);
+		printf("\nEnter quanta for each Process: "); 
+		scanf("%d", &quanta);
 		printf("\nEnter 1 for faculty and 2 for student\n");
 		for(i=0; i<n; i++)
 		{
@@ -174,7 +170,6 @@ void input()
 		}
 	}
 }
-
 void output()
 {
 	int i=0, total=0, sum=0; 
@@ -192,18 +187,15 @@ void output()
 	printf("\nAverage query time: %lf", avg);
 	printf("\nProcess Execution Completed");
 }
-
-
-
-int main()
+main()
 {
  printf("\nWelcome, please follow the instructions provided below"
 			"\nEnter time in 2400 hours format. example for 10:30 am enter 10030"
 			"\nEnter query arrival times in ascending order"
 			"\nEnter All Time units are in minutes. \n\n"
 			);
-input();
-merger();
-round_robin();
-output();
+	input();
+	merger();
+	round_robin();
+	output();
 }
