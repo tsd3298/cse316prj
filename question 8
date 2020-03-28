@@ -108,4 +108,6 @@ void output()
 
 int main()
 {
+merger();
+output();
 }
