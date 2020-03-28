@@ -197,6 +197,8 @@ void output()
 
 int main()
 {
+input();
 merger();
+round_robin();
 output();
 }
