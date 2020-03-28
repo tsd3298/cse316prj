@@ -190,7 +190,7 @@ void output()
 main()
 {
  printf("\nWelcome, please follow the instructions provided below"
-			"\nEnter time in 2400 hours format. example for 10:30 am enter 10030"
+			"\nEnter time in 2400 hours format. example for 10:30 am enter 1030"
 			"\nEnter query arrival times in ascending order"
 			"\nEnter All Time units are in minutes. \n\n"
 			);
