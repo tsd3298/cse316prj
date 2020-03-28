@@ -1,0 +1,93 @@
+#include<stdio.h>
+struct online_sys
+{
+	int pid;
+	int at;
+	int bt;
+	int cmpt;
+	int rbt;
+}
+
+f[100], s[100], m[100];
+int n, fc=0, sc=0, mc=0;
+int qty;
+
+
+
+void merger(){
+	int isc=0, ifc= 0, min, flag;
+	if( fc!=0  && sc!=0)
+	{
+		while(isc<sc && ifc<fc)
+		{
+			if(f[ifc].at == s[isc].at)
+			{
+				m[mc] = f[ifc];
+				mc++;
+				ifc++;
+				m[mc]= s[isc];
+				mc++;
+				isc++;
+			}
+			else if(f[ifc].at < s[isc].at)
+			{
+				m[mc]= f[ifc];
+				mc++;
+				ifc++;
+			}
+			else if(f[ifc].at > s[isc].at)
+			{
+				m[mc]= s[isc];
+				mc++;
+				isc++;
+			}
+			else;
+		}
+		if(mc != (fc+sc))
+		{
+			if(fc!=ifc)
+			{
+				while(ifc!=fc)
+				{
+					m[mc]= f[ifc];
+					mc++;
+					ifc++;
+				}
+			}
+			else if(sc!=isc)
+			{
+				while(isc!=sc)
+				{
+					m[mc]= s[isc];
+					mc++;
+					isc++;
+				}
+			}
+		}
+	}
+	else if(fc==0)
+	{
+		while(isc!=sc)
+		{
+			m[mc]= s[isc];
+			mc++;
+			isc++;
+		}
+	}
+	else if(sc==0)
+	{
+		while(ifc!=fc)
+		{
+			m[mc]= f[ifc];
+			mc++;
+			ifc++;
+		}
+	}
+	else {
+		printf("\n No valid Jobs available\n");
+	}
+}
+
+int main()
+{
+}
